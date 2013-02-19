@@ -15,11 +15,14 @@ import team.ApiPlus.API.Effect.LocationEffect;
 public class ParticleEffect implements LocationEffect{
 
 	private EffectTarget et;
-	
+
 	private int amount = 0;
 	private float gravity = 0;
 	private int maxAge = 0;
 	private float scale = 0;
+	private int red = 0;
+	private float green = 0;
+	private int blue = 0;
 	private ParticleType pt;
 
 	public ParticleEffect(Object...args) {
@@ -28,8 +31,11 @@ public class ParticleEffect implements LocationEffect{
 		this.gravity = (Integer) args[2];
 		this.maxAge = (Integer) args[3];
 		this.scale = (Integer) args[4];
+		this.red = (Integer) args[5];
+		this.green = (Integer) args[6];
+		this.blue = (Integer) args[7];
 	}
-	
+
 	@Override
 	public void performEffect(Object... arguments) {
 		Location loc = (Location) arguments[0];
@@ -38,6 +44,10 @@ public class ParticleEffect implements LocationEffect{
 		p.setGravity(gravity);
 		p.setMaxAge(maxAge);
 		p.setScale(scale);
+		p.setRange(100);
+		p.setParticleRed(red);
+		p.setParticleGreen(green);
+		p.setParticleBlue(blue);
 		p.spawn();
 	}
 

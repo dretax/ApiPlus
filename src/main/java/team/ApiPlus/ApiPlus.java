@@ -54,7 +54,7 @@ import team.ApiPlus.Util.VersionChecker;
 
 @SuppressWarnings("unused")
 public class ApiPlus extends JavaPlugin {
-	
+
 	private String version;
 	private static ApiPlus instance;
 	private ItemManager iManager;
@@ -65,11 +65,11 @@ public class ApiPlus extends JavaPlugin {
 	private ConfigManager cManager;
 	public static Map<String,Plugin> hooks = new HashMap<String,Plugin>();
 	public static List<Material> transparentMaterials = new ArrayList<Material>();
-	
-	
-	
+
+
+
 	private boolean customMobs;
-	
+
 	@Override
 	public void onEnable() {
 		instance = this;
@@ -89,7 +89,7 @@ public class ApiPlus extends JavaPlugin {
 		//new VersionChecker(this, "http://dev.bukkit.org/server-mods/apiplus/files.rss");
 		Utils.info(String.format("API+ Version:%s Enabled.", version));
 	}
-	
+
 	private void hook() {
 		Plugin _wg = getServer().getPluginManager().getPlugin("WorldGuard");
 		Plugin _fur = getServer().getPluginManager().getPlugin("FurnaceAPI");
@@ -107,7 +107,7 @@ public class ApiPlus extends JavaPlugin {
 			Utils.info("Hooked into LWC");
 		}
 	}
-	
+
 	private void loadGeneral() {
 		File general = new File(this.getDataFolder(), "general.yml");
 		if(FileUtil.create(general))
@@ -131,7 +131,7 @@ public class ApiPlus extends JavaPlugin {
 			customMobs = Boolean.valueOf(con.getString("mobs","false"));
 		} else return;
 	}
-	
+
 	private void registerDefaultMaterialTypes(){
 		TypeManager tm = TypeManager.getInstance();
 		tm.registerBlockType("Block", BlockType.class);
@@ -143,7 +143,7 @@ public class ApiPlus extends JavaPlugin {
 		tm.registerItemType("ItemEffect", ItemTypeEffect.class);
 		tm.registerItemType("ItemEffectPlusProperty", ItemTypeEffectPlusProperty.class);
 	}
-	
+
 	private void registerDefaultEffectTypes(){
 		EffectManager em = EffectManager.getInstance();
 		em.registerEffectType("BREAK", BreakEffect.class);
@@ -156,7 +156,7 @@ public class ApiPlus extends JavaPlugin {
 		em.registerEffectType("BURN", BurnEffect.class);
 		em.registerEffectType("POTION", PotionEffect.class);
 	}
-	
+
 	/**
 	 * Method used for adding a hook into API+.
 	 * @param p Plugin to be added.
@@ -172,7 +172,7 @@ public class ApiPlus extends JavaPlugin {
 			return true;
 		}
 	}
-	
+
 	/**
 	 * Method used for getting Server's Instance of Api+.
 	 * @return ApiPlus Instance of Api+.
@@ -180,12 +180,12 @@ public class ApiPlus extends JavaPlugin {
 	public static ApiPlus getInstance() {
 		return instance;
 	}
-	
+
 	public boolean isMobAPI() {
 		return customMobs;
 	}
-	
-	
+
+
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if(args.length == 1) {
 			Plugin plugin = Bukkit.getPluginManager().getPlugin(args[0]);
