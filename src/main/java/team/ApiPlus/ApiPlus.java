@@ -52,7 +52,6 @@ import team.ApiPlus.Util.FileUtil;
 import team.ApiPlus.Util.Utils;
 import team.ApiPlus.Util.VersionChecker;
 
-@SuppressWarnings("unused")
 public class ApiPlus extends JavaPlugin {
 
 	private String version;
@@ -74,11 +73,11 @@ public class ApiPlus extends JavaPlugin {
 	public void onEnable() {
 		instance = this;
 		version = getDescription().getVersion();
-		iManager = ItemManager.getInstance();
-		bManager = BlockManager.getInstance();
+		setiManager(ItemManager.getInstance());
+		setbManager(BlockManager.getInstance());
 		lManager = LoadoutManager.getInstance();
-		tManager = TypeManager.getInstance();
-		eManager = EffectManager.getInstance();
+		settManager(TypeManager.getInstance());
+		seteManager(EffectManager.getInstance());
 		cManager = ConfigManager.getInstance();
 		lManager.loadAll();
 		hook();
@@ -206,5 +205,37 @@ public class ApiPlus extends JavaPlugin {
 			return true;
 		}
 		return false;
+	}
+
+	public BlockManager getbManager() {
+		return bManager;
+	}
+
+	public void setbManager(BlockManager bManager) {
+		this.bManager = bManager;
+	}
+
+	public TypeManager gettManager() {
+		return tManager;
+	}
+
+	public void settManager(TypeManager tManager) {
+		this.tManager = tManager;
+	}
+
+	public EffectManager geteManager() {
+		return eManager;
+	}
+
+	public void seteManager(EffectManager eManager) {
+		this.eManager = eManager;
+	}
+
+	public ItemManager getiManager() {
+		return iManager;
+	}
+
+	public void setiManager(ItemManager iManager) {
+		this.iManager = iManager;
 	}
 }
